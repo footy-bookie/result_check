@@ -1,0 +1,27 @@
+steps:
+  #- name: 'python:3.7'
+  #  id: 'unittests'
+  #  entrypoint: 'bash'
+  #  args:
+  #    - '-c'
+  #    - 'pip install -r src/requirements.txt'
+  #    - 'python -m unittest discover --verbose -s ./tests -p "*_test.py"'
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'functions'
+      - '--project=$PROJECT_ID'
+      - 'deploy'
+      - '$_CLOUD_FUNCTION_NAME'
+      - '--runtime'
+      - 'python38'
+      - '--trigger-http'
+      - '--region'
+      - '$_LOCATION'
+      - '--entry-point'
+      - 'main'
+      - '--source=./src'
+timeout: '1600s'
+artifacts:
+  objects:
+    location: '$_ARTIFACT_STORE/data-result-check'
+    paths: ['src/*.py']

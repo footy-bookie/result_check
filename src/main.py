@@ -4,7 +4,7 @@ from string import Template
 
 from flask import jsonify
 
-from bookie_result_check.src.xgb_result_check import ResultCheck
+from xgb_result_check import ResultCheck
 
 
 def main(request):

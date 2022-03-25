@@ -3,7 +3,7 @@ import datetime
 import google.auth
 from google.cloud import storage
 
-from .helper import read_bigquery, write
+from helper import read_bigquery, write_data
 
 
 class ResultCheck:

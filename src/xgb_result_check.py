@@ -55,9 +55,9 @@ class ResultCheck:
             df_short = df[['match_id', 'date_GMT', 'status', 'home_team_name', 'away_team_name', 'real_result',
                            'possible_win', 'predicted_results']]
             print(df_short)
+            write_storage(df_short, os.getenv('RESULT_CHECK_OVER_TIME_SINK'))
             write_bq(df_short, self.project_id, 'footy_data_warehouse', os.getenv('TOTAL_RESULT_CHECK_BQ'),
                      self.credentials)
-            write_storage(df_short, os.getenv('RESULT_CHECK_OVER_TIME_SINK'))
 
             return df
         else:

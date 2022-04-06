@@ -30,5 +30,5 @@ def main(request):
         return jsonify(status="failure"), 200
 
 
-#if __name__ == "__main__":
- #   main(request={})
+if __name__ == "__main__":
+    main(request={})

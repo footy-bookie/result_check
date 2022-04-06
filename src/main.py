@@ -28,7 +28,3 @@ def main(request):
         log_message = Template("$error").substitute(error=error)
         logging.error(log_message)
         return jsonify(status="failure"), 200
-
-
-if __name__ == "__main__":
-    main(request={})

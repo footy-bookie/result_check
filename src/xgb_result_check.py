@@ -42,8 +42,9 @@ class ResultCheck:
 
         if df['match_id'].isin(df_predicted['match_id']).sum() == 8:
             df['possible_win'] = 0
+            df_predicted['predicted_result'] = df_predicted['predicted_result'].astype(float)
             for index, row in df.iterrows():
-                if df['real_result'][index] == float(df_predicted.copy()['predicted_result'][index]):
+                if df['real_result'][index] == df_predicted.copy()['predicted_result'][index]:
                     if df['real_result'][index] == 3:
                         df.at[index, 'possible_win'] = df['odds_ft_home_team_win'][index] * 10
                     elif df['real_result'][index] == 0:

@@ -40,7 +40,7 @@ class ResultCheck:
         df = self.actual_results()
         df_predicted = self.predicted_results
 
-        if df['match_id'].isin(df_predicted['match_id']).sum() == 9:
+        if df['match_id'].isin(df_predicted['match_id']).sum() == 8:
             df['possible_win'] = 0
             for index, row in df.iterrows():
                 if df['real_result'][index] == df_predicted.copy()['predicted_result'][index]:
